@@ -8,10 +8,27 @@ const CaughtPokemon = (props) => {
     getPokemon(caught.concat(PokemonTypes[Math.floor(Math.random() * PokemonTypes.length)]));
   }
 
-  var date = new Date().toLocaleDateString()
+  var [pokemonNameInput, setpokemonNameInput] = useState("");
+  
+  function handleInputChange(event){
+    setpokemonNameInput(event.target.value);
+  }
+
+  function onClick(){
+    if (pokemonNameInput !== "") {
+      getPokemon(caught.concat(pokemonNameInput));
+      setpokemonNameInput("");
+    }   
+  }
+
   return(
     <div>
-    <button onClick={catchPokemon}>Pokemon counter </button>
+      <input 
+      type="text"
+      value={pokemonNameInput}
+      onChange= {handleInputChange}
+      />
+    <button onClick={onClick}>Pokemon counter </button>
        <p>
           <ul>
           {caught.map((item, index) => {
