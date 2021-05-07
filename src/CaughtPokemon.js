@@ -31,6 +31,7 @@ const CaughtPokemon = (props) => {
     <button onClick={onClick}>Pokemon counter </button>
        <p>
           <ul>
+            
           {caught.map((item, index) => {
             return <li key={index}>{item}</li>
           })} Pokemon on {props.date}
